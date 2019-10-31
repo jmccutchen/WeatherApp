@@ -5,80 +5,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
-        integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
     <link rel="stylesheet" href="style.css" />
     <title>Weather App</title>
 </head>
 
 <body>
 
-    <div class="card text-center bg-light container">
-        <div class="card-header bg-dark text-white h2 heading font-weight-bold header">
-            Weather Dashboard
-        </div>
+    <div class="card bg-light container">
+        <div class="card-header bg-dark text-white h2 heading font-weight-bold header text-center">
+            Weather Dashboard</div>
         <div class="card-body">
             <div class="card-columns">
                 <div class="card" style="max-width: 319px;">
                     <div class="card-block">
                         <div class="input-group">
                             <!-- search box for city -->
-                            <input type="text" class="form-control" placeholder="Search for a City"
-                                aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <div class="input-group-append">
+                            <input type="text" class="form-control text-left" id="cityInput"
+                                placeholder="Search for a City" aria-label="Recipient's username"
+                                aria-describedby="button-addon2">
+                            <div class="input-group-append" id="search-btn">
                                 <button class="btn btn-outline-secondary fas fa-search" type="button"
                                     id="button-addon2"></button>
                             </div>
+                            <span id="error"></span>
                         </div>
                     </div>
                 </div>
-                <!-- card for city stats and 5 day weather -->
-                <div class="card" style="width: 700px;">
-                    <div class="card-block">
-                        <div class="border border-secondary rounded">
-                            <div id="cityStats">
-                                <div class="h4 heading" placeholder="City">
-                                </div>
-                                <div id=""></div>
+                <div class="card-body">
+                    <div class="card-columns">
+                        <div class="card" style="max-width: 319px;">
+                            <div class="card-block">
+                                <div class="">
+                                    <ul>
 
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <!-- div for 5 day forecast -->
-                        <div id= "5day">
-                                
+                    </div>
+                    <!-- card for city stats and 5 day weather -->
+                    <div class="card" style="width: 700px;">
+                        <div class="card-block">
+                            <div class="border border-secondary rounded text-left">
+                                <div>
+                                    <div class="h4 heading" id="cityStats" placeholder="City"></div>
+                                    <div class="temp day"></div>
+                                    <div class="humidity day "></div>
+                                    <div class="wind day"></div>
+                                    <div id="uvIndex day"></div>
+                                </div>
+                            </div>
+                            <!-- div for 5 day forecast -->
+                            <div class= "container">5-Day Forecast:
+                                <div id="5day" class= "row">
+                                    <div class="col-sm-2">
+                                        <div class="card ">
+                                            <div class="card-body _5day">
+                                                <div id="day1"></div>
+                                                <div>
+                                                    <img src="" id="day1Icon">
+                                                </div>                                         
+                                                <div id="day1Temp"></div>
+                                                <div id="day1Humid"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="card _5day">
+                                            <div class="card-body ">
+                                                <div id="day2"></div>
+                                                <div >
+                                                    <img src="" id="day2Icon" >
+                                                </div>
+                                                <div id="day2Temp"></div>
+                                                <div id="day2Humid"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="card">
+                                            <div class="card-body _5day">
+                                                <div id="day3"></div>
+                                                <div>
+                                                    <img src="" id="day3Icon">
+                                                </div>
+                                                <div id="day3Temp"></div>
+                                                <div id="day3Humid"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="card">
+                                            <div class="card-body _5day">
+                                                <div id="day4"></div>
+                                                <div >
+                                                    <img src="" id="day4Icon">
+                                                </div>
+                                                <div id="day4Temp"></div>
+                                                <div id="day4Humid"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="card">
+                                            <div class="card-body _5day">
+                                                <div id="day5"></div>
+                                                <div >
+                                                    <img src="" id="day5Icon">
+                                                </div>
+                                                <div id="day5Temp"></div>
+                                                <div id="day5Humid"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card-body">
-            <div class="card-columns">
-                <div class="card" style="max-width: 319px;">
-                    <div class="card-block">
-                        <div class="">
-                            <ul>
 
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer text-muted header">
+            <div class="card-footer text-muted header text-center">
                 Wherever you go, there you are. . .
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
             integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
             crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+        <script src="moment.js"></script>
         <script src="script.js"></script>
 
 </body>

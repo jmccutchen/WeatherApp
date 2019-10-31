@@ -7,3 +7,33 @@
     padding-top: 10px;
     padding-bottom: 5px;
 }
+
+#error {
+    color: red;
+    font-weight: bold:
+}
+
+#cityStats {
+    padding: 10px;
+}
+
+.day {
+    padding: 10px;
+}
+
+#day1,
+#day2,
+#day3,
+#day4,
+#day5 {
+    font-size: 15px;
+};
+
+._5day {
+    background-color: rgb(8, 8, 223) !important;
+    color: white !important;
+}
+
+#button-addon2 {
+    backround-color: rgb(8, 8, 223) !important;
+}

@@ -13,111 +13,107 @@
 
 <body>
 
-    <div class="card bg-light container">
-        <div class="card-header bg-dark text-white h2 heading font-weight-bold header text-center">
+    <div class="card bg-light ml-5 mr-5">
+        <div class="card-header bg-dark text-white h2  heading font-weight-bold header text-center mb-2">
             Weather Dashboard</div>
-        <div class="card-body">
+        <div class="card-body mx-4 container">
             <div class="card-columns">
-                <div class="card" style="max-width: 319px;">
+                <div class="card" style="max-width: 200px;">
                     <div class="card-block">
                         <div class="input-group">
                             <!-- search box for city -->
                             <input type="text" class="form-control text-left" id="cityInput"
                                 placeholder="Search for a City" aria-label="Recipient's username"
                                 aria-describedby="button-addon2">
-                            <div class="input-group-append" id="search-btn">
-                                <button class="btn btn-outline-secondary fas fa-search" type="button"
+                            <div class="input-group-append search-btn">
+                                <button class="btn btn-outline-secondary bg-primary fas fa-search" type="button"
                                     id="button-addon2"></button>
                             </div>
                             <span id="error"></span>
                         </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <div class="card-columns">
-                        <div class="card" style="max-width: 319px;">
-                            <div class="card-block">
-                                <div class="">
-                                    <ul>
 
-                                    </ul>
-                                </div>
-                            </div>
+                    <div class="card-block">
+                        <div id="cityList">
+
                         </div>
                     </div>
-                    <!-- card for city stats and 5 day weather -->
-                    <div class="card" style="width: 700px;">
-                        <div class="card-block">
-                            <div class="border border-secondary rounded text-left">
-                                <div>
-                                    <div class="h4 heading" id="cityStats" placeholder="City"></div>
-                                    <div class="temp day"></div>
-                                    <div class="humidity day "></div>
-                                    <div class="wind day"></div>
-                                    <div id="uvIndex day"></div>
-                                </div>
+                    <button type="button" class="btn btn-outline-primary btn-block">Clear Searches</button>
+                </div>
+
+                
+                <!-- card for city stats and 5 day weather -->
+                <div class="card dailyCard" style="width: 900px;">
+                    <div class="card-block mb-5">
+                        <div class="border border-secondary rounded text-left">
+                            <div>
+                                <div class="h4 heading" id="cityStats" placeholder="City"></div>
+                                <div class="temp day"></div>
+                                <div class="humidity day "></div>
+                                <div class="wind day"></div>
+                                <div id="uvIndex day"></div>
                             </div>
-                            <!-- div for 5 day forecast -->
-                            <div class= "container">5-Day Forecast:
-                                <div id="5day" class= "row">
-                                    <div class="col-sm-2">
-                                        <div class="card ">
-                                            <div class="card-body _5day">
-                                                <div id="day1"></div>
-                                                <div>
-                                                    <img src="" id="day1Icon">
-                                                </div>                                         
-                                                <div id="day1Temp"></div>
-                                                <div id="day1Humid"></div>
+                        </div>
+                        <!-- div for 5 day forecast -->
+                        <div class="ml-2 pr-2 font-weight-bold pt-3">5-Day Forecast:
+                            <div id="5day" class="row mt-2  text-white">
+                                <div class="col d-inline-flex">
+                                    <div class="card ">
+                                        <div class="card-body _5day bg-primary">
+                                            <div id="day1"></div>
+                                            <div>
+                                                <img src="" id="day1Icon">
                                             </div>
+                                            <div class="" id="day1Temp"></div>
+                                            <div class="" id="day1Humid"></div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
-                                        <div class="card _5day">
-                                            <div class="card-body ">
-                                                <div id="day2"></div>
-                                                <div >
-                                                    <img src="" id="day2Icon" >
-                                                </div>
-                                                <div id="day2Temp"></div>
-                                                <div id="day2Humid"></div>
+                                </div>
+                                <div class="col d-inline-flex">
+                                    <div class="card _5day bg-primary">
+                                        <div class="card-body ">
+                                            <div id="day2"></div>
+                                            <div>
+                                                <img src="" id="day2Icon">
                                             </div>
+                                            <div id="day2Temp"></div>
+                                            <div id="day2Humid"></div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
-                                        <div class="card">
-                                            <div class="card-body _5day">
-                                                <div id="day3"></div>
-                                                <div>
-                                                    <img src="" id="day3Icon">
-                                                </div>
-                                                <div id="day3Temp"></div>
-                                                <div id="day3Humid"></div>
+                                </div>
+                                <div class="col d-inline-flex">
+                                    <div class="card">
+                                        <div class="card-body _5day bg-primary">
+                                            <div id="day3"></div>
+                                            <div>
+                                                <img src="" id="day3Icon">
                                             </div>
+                                            <div id="day3Temp"></div>
+                                            <div id="day3Humid"></div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
-                                        <div class="card">
-                                            <div class="card-body _5day">
-                                                <div id="day4"></div>
-                                                <div >
-                                                    <img src="" id="day4Icon">
-                                                </div>
-                                                <div id="day4Temp"></div>
-                                                <div id="day4Humid"></div>
+                                </div>
+                                <div class="col d-inline-flex">
+                                    <div class="card">
+                                        <div class="card-body _5day bg-primary">
+                                            <div id="day4"></div>
+                                            <div>
+                                                <img src="" id="day4Icon">
                                             </div>
+                                            <div id="day4Temp"></div>
+                                            <div id="day4Humid"></div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
-                                        <div class="card">
-                                            <div class="card-body _5day">
-                                                <div id="day5"></div>
-                                                <div >
-                                                    <img src="" id="day5Icon">
-                                                </div>
-                                                <div id="day5Temp"></div>
-                                                <div id="day5Humid"></div>
+                                </div>
+                                <div class="col d-inline-flex">
+                                    <div class="card">
+                                        <div class="card-body _5day bg-primary">
+                                            <div id="day5"></div>
+                                            <div>
+                                                <img src="" id="day5Icon">
                                             </div>
+                                            <div id="day5Temp"></div>
+                                            <div id="day5Humid"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -126,10 +122,10 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="card-footer text-muted header text-center">
-                Wherever you go, there you are. . .
-            </div>
+        <div class="card-footer text-muted header text-center">
+            Wherever you go, there you are. . .
         </div>
 
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>

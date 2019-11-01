@@ -1,26 +1,67 @@
 $(document).ready(function() {
 
 
-
-
-
-
-// // api.openweathermap.org/data/2.5/weather?q={city name}
-
-var key = ""
-
-$("#search-btn").on("click", () => {
+$(".search-btn").on("click", () => {
     
     var city= $("#cityInput").val();
 
+    cities.push(city);
+    $(".dailyCard").removeClass("d-none")
 
 dailyWeather(city);
 clearInput();
+storeCities();
+renderCities();
 })
 
 function clearInput() {
     $("#cityInput").val("");
 }
+
+// function to get stored cities
+var cities = [];
+getCities();
+
+// function to default to last city in array
+if (cities.length === 0){
+    $(".dailyCard").addClass("d-none")
+} else {
+var lastCity = cities[0];
+dailyWeather(lastCity);
+console.log(lastCity);
+}
+
+function getCities (){
+    var storedCities = JSON.parse(localStorage.getItem("cities"));
+
+    if (storedCities !== null) {
+    cities = storedCities;
+    }
+
+    renderCities();
+}
+
+function storeCities() {
+    localStorage.setItem("cities", JSON.stringify(cities));
+}
+
+function renderCities() {
+    $("#cityList").empty();
+    $(cities).each(function (key, element) {
+        var li = $("<div>").text(element).addClass("pl-2 pt-2 pb-2 citySave")
+        $("#cityList").append(li)
+        $(li).after('<hr class= "my-0"></hr>');
+        // console.log("li"+ li) 
+        // console.log("element" + element);
+        // console.log("city" + cities)
+    })
+}
+
+// when click on saved city
+$(".citySave").on("click", function() {
+   let cityText = $(this).text();
+   dailyWeather(cityText);
+});
 
 function dailyWeather(city){
 

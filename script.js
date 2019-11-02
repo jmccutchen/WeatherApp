@@ -18,6 +18,11 @@ renderCities();
 
 }  
 })
+    // button to clear local storage and saved cities on screen
+$(".btnClear").on("click", () => {
+    window.localStorage.clear()
+    $("#cityList").empty();
+})
 
 function clearInput() {
     $("#cityInput").val("");
@@ -33,7 +38,7 @@ if (cities.length === 0){
 } else {
 var lastCity = cities[0];
 dailyWeather(lastCity);
-console.log(lastCity);
+// console.log(lastCity);
 }
 
 // gets cities from local storage
@@ -68,11 +73,13 @@ function renderCities() {
 
 // when click on saved city
 $(".citySave").on("click", function() {
-   let cityText = $(this).text();
+   let cityText = $(this).html();
    dailyWeather(cityText);
+   console.log("saved city: " + cityText);
 });
 
-
+var lat = ""
+var lon = ""
 
 function dailyWeather(city){
 
@@ -80,18 +87,51 @@ function dailyWeather(city){
   // for daily weather
     $.ajax({
         url: currentURL,
-        method: "GET"
+        method: "GET",
 
     }).then(function(response) {
         // gets daily stats
        var todayDate = moment().format("L");
-        $("#cityStats").text(response.name + " (" + todayDate + ")");
+       var day0Icon = response.weather[0].icon;
+       var day0IconURL = `http://openweathermap.org/img/wn/${day0Icon}.png`
+        $("#cityStats").text(response.name + " (" + todayDate + ")   ");
         $(".temp").text("Temperature: " + response.main.temp + "\xB0F");
         $(".humidity").text("Humidity: " + response.main.humidity + "%");
         $(".wind").text("Wind Speed: " + response.wind.speed + "MPH");
+        $("#day0Icon").attr("src", day0IconURL);
+
+        console.log(day0Icon);
+        console.log(day0IconURL);
+
+        // lat = response.coord.lat
+        // lon = response.coord.lon
+
+        console.log("inside" + lat)
+        console.log(lon)
+
+    console.log(response);
     });
+    
     weekWeather(city);
 }
+
+
+
+console.log("outside" + lat)
+console.log("inside" + lon)
+
+// function uvIndex(){
+//     var uvURL = `http://api.openweathermap.org/data/2.5/uvi?appid=e4c0273e5ea54d9af35c603a4dae870e&lat=${lat}&lon=${lon}`
+    
+
+//     $.ajax({
+//         url: uvURL,
+//         method: "GET"
+
+//     }).then(function(response) {
+//         $("#uvIndex").text(response.value)
+//     })
+// };
 
 function weekWeather(city){
 
@@ -114,6 +154,7 @@ function weekWeather(city){
      $("#day1Temp").text("Temp: " + response.list[0].main.temp + " \xB0F")
     //  for Humidity
      $("#day1Humid").text("Humidity: " + response.list[0].main.temp + "%")
+    
 
      // day 2 of 5
     var day2Date = moment().add(2, "day").format("L")
@@ -151,7 +192,7 @@ function weekWeather(city){
     $("#day5Temp").text("Temp: " + response.list[4].main.temp + " \xB0F")
     $("#day5Humid").text("Humidity: " + response.list[4].main.temp + "%")
 
-    console.log(response);
+    // console.log(response);
     }); //end of ajax call
 
     

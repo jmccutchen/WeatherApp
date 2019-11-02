@@ -2,7 +2,10 @@ $(document).ready(function() {
 
 
 $(".search-btn").on("click", () => {
-    
+  
+ if(!$("#cityInput").val()) {
+    return;
+ } else {
     var city= $("#cityInput").val();
 
     cities.push(city);
@@ -12,6 +15,8 @@ dailyWeather(city);
 clearInput();
 storeCities();
 renderCities();
+
+}  
 })
 
 function clearInput() {
@@ -31,6 +36,7 @@ dailyWeather(lastCity);
 console.log(lastCity);
 }
 
+// gets cities from local storage
 function getCities (){
     var storedCities = JSON.parse(localStorage.getItem("cities"));
 
@@ -41,10 +47,13 @@ function getCities (){
     renderCities();
 }
 
+// sets up local storage
 function storeCities() {
     localStorage.setItem("cities", JSON.stringify(cities));
 }
 
+
+// goes through each city in array and dynamically puts on page
 function renderCities() {
     $("#cityList").empty();
     $(cities).each(function (key, element) {
@@ -63,6 +72,8 @@ $(".citySave").on("click", function() {
    dailyWeather(cityText);
 });
 
+
+
 function dailyWeather(city){
 
     var currentURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=e4c0273e5ea54d9af35c603a4dae870e`
@@ -78,11 +89,6 @@ function dailyWeather(city){
         $(".temp").text("Temperature: " + response.main.temp + "\xB0F");
         $(".humidity").text("Humidity: " + response.main.humidity + "%");
         $(".wind").text("Wind Speed: " + response.wind.speed + "MPH");
-
-        // console.log(response.main.temp);
-        // console.log(response.main.humidity);
-        // console.log(response.wind.speed);
-
     });
     weekWeather(city);
 }

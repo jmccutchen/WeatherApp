@@ -78,8 +78,7 @@ $(".citySave").on("click", function() {
    console.log("saved city: " + cityText);
 });
 
-var lat = ""
-var lon = ""
+
 
 function dailyWeather(city){
 
@@ -100,19 +99,20 @@ function dailyWeather(city){
         $(".wind").text("Wind Speed: " + response.wind.speed + "MPH");
         $("#day0Icon").attr("src", day0IconURL);
 
-        console.log(day0Icon);
-        console.log(day0IconURL);
+        // console.log(day0Icon);
+        // console.log(day0IconURL);
 
-        // lat = response.coord.lat
-        // lon = response.coord.lon
+        lat = response.coord.lat
+        lon = response.coord.lon
 
-        console.log("inside" + lat)
-        console.log(lon)
-
+        // console.log("inside" + lat)
+        // console.log("inside" + lon)
+        uvIndex(lat, lon);
     console.log(response);
     });
     
     weekWeather(city);
+    
 }
 
 
@@ -120,18 +120,18 @@ function dailyWeather(city){
 console.log("outside" + lat)
 console.log("inside" + lon)
 
-// function uvIndex(){
-//     var uvURL = `http://api.openweathermap.org/data/2.5/uvi?appid=e4c0273e5ea54d9af35c603a4dae870e&lat=${lat}&lon=${lon}`
+function uvIndex(lat, lon){
+    var uvURL = `http://api.openweathermap.org/data/2.5/uvi?appid=e4c0273e5ea54d9af35c603a4dae870e&lat=${lat}&lon=${lon}`
     
 
-//     $.ajax({
-//         url: uvURL,
-//         method: "GET"
+    $.ajax({
+        url: uvURL,
+        method: "GET"
 
-//     }).then(function(response) {
-//         $("#uvIndex").text(response.value)
-//     })
-// };
+    }).then(function(response) {
+        $("#uvIndex").text(response.value)
+    })
+};
 
 function weekWeather(city){
 
